@@ -9,7 +9,7 @@ creating project with typescript template
 
 adding redux and react-redux
 
-`$. yarn add react-redux`
+`$. yarn add redux react-redux`
 
 you don't need to install additional types for `redux`, but you need to install additional types for `react-redux`
 
