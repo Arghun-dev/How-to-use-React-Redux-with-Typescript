@@ -8,7 +8,7 @@ const initialState = {
   notes: []
 }
 
-export const notesReducer = (state:NotesState = initialState, action: Action) => {
+export const NotesReducer = (state:NotesState = initialState, action: Action) => {
   switch(action.type) {
     case "ADD_NOTE": {
       return {...state, notes: [...state.notes, action.payload]}

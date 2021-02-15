@@ -1,10 +1,11 @@
 import React from 'react';
+import AddNoteInput from './components/AddNoteInput'
 import './App.css';
 
-function App() {
+const App:React.FC = () => {
   return (
     <div className="App">
-      App
+      <AddNoteInput />
     </div>
   );
 }
