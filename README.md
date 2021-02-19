@@ -85,6 +85,46 @@ export function TodosReducer(state = initialState, action:TodosActionTypes):ITod
 }
 ```
 
+We now need to generate the root reducer function, which is normally done using combineReducers. Note that we do not have to explicitly declare a new interface for RootState. We can use ReturnType to infer state shape from the rootReducer
+
+```js
+// src/store/index.ts
+
+import { systemReducer } from './system/reducers'
+import { chatReducer } from './chat/reducers'
+
+const rootReducer = combineReducers({
+  system: systemReducer,
+  chat: chatReducer
+})
+
+export type RootState = ReturnType<typeof rootReducer>
+```
+
+**Type Checking Middleware**
+
+A middleware is a higher-order function that composes a dispatch function to return a new dispatch function. To create a type checked middleware function, we can leverage the Middleware interface provided by Redux together with our store type (as defined in the previous example):
+
+```js
+// src/middleware/example.ts
+
+import { Middleware } from 'redux'
+
+import { RootState } from '../store'
+
+export const exampleMiddleware: Middleware<
+  {}, // legacy type parameter added to satisfy interface signature
+  RootState
+> = store => next => action => {
+  // code here
+}
+```
+
+**Working with React Redux**
+
+`Typing the useSelector hook`
+
+
 ## Implementing project
 
 creating project with typescript template
