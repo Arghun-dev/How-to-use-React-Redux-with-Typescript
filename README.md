@@ -66,11 +66,22 @@ import {
   ITodos
 } from './types'
 
-const initialState: I{
-  todos: ITodo
+const initialState:ITodos {
+  todos: []
 }
 
-export function TodosReducer(state
+export function TodosReducer(state = initialState, action:TodosActionTypes):ITodos {
+  switch(action.type) {
+    case ADD_TODO:
+      return {
+        todos: [...state.todos, action.payload]
+      }
+    case DELETE_TODO:
+      return {
+        todos: state.todos.filter(todo => todo.id !== action.payload)
+      }
+  }
+}
 ```
 
 ## Implementing project
