@@ -1,5 +1,78 @@
 # How-to-use-React-Redux-with-Typescript
 
+I think the best guide to learn how to use typescript in redux is the `Redux` official website.
+
+for example I want to create a `todoApp` using `Typescript` and `Redux`
+
+`step 1`
+
+**src/store/todos/types.ts**
+
+```js
+// states
+export interface ITodo {
+  text: string;
+  completed: boolean;
+}
+
+export interface ITodos {
+  todos: ITodo[];
+}
+
+// actions
+export const ADD_TODO = "ADD_TODO";
+export const DELETE_TODO = "DELETE_TODO";
+
+interface AddTodoAction {
+  type: ADD_TODO,
+  payload: ITodo
+}
+
+interface DeleteTodoAction {
+  type: DELETE_TODO,
+  payload: number
+}
+
+export type TodosActionTypes = AddTodoAction | DeleteTodoAction
+```
+
+**src/store/todos/actions.ts**
+
+```js
+import { ADD_TODO, DELETE_TODO, TodosActionTypes, ITodo } from './types';
+
+export function addTodo(newTodo:ITodo):TodosActionTypes {
+  return {
+    type: ADD_TODO,
+    payload: newTodo
+  }
+}
+
+export function deleteTodo(id:number):TodosActionTypes {
+  return {
+    type: DELETE_TODO,
+    payload: id
+  }
+}
+```
+
+**src/store/todos/reducer.ts**
+
+```js
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  TodosActionTypes,
+  ITodos
+} from './types'
+
+const initialState: I{
+  todos: ITodo
+}
+
+export function TodosReducer(state
+```
+
 ## Implementing project
 
 creating project with typescript template
