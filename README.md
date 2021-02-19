@@ -18,6 +18,21 @@ you don't need to install additional types for `redux`, but you need to install 
 
 ## How to implement actions and reducers using typescript
 
+**store.ts**
+
+```js
+import { createStore, combineReducer } from 'redux'
+import { TodosReducer } from './todos'
+
+export const rootReducer({
+  TodosReducer
+})
+
+export type AppState = ReturnType<typeof rootReducer>
+
+export const store = createStore(rootReducer)
+```
+
 **AddNote Action**
 
 ```js
