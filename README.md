@@ -80,6 +80,7 @@ export function TodosReducer(state = initialState, action:TodosActionTypes):ITod
       return {
         todos: state.todos.filter(todo => todo.id !== action.payload)
       }
+    default: return state
   }
 }
 ```
